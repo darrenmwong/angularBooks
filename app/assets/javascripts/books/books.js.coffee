@@ -4,12 +4,12 @@ BooksRouter = angular.module("BooksRouter",["ngRoute"])
 
 BooksRouter.config(["$routeProvider",
     ($routeProvider)->
-        $routeProvider.when("/", {
+        $routeProvider.when("/",
             templateUrl: "/books",
             controller: "BooksCtrl"
-            }).
+            ).
             when("/books/:id",
             templateUrl: "books/view",
-            controller:"BooksDetailsCtrl"
-        )
+            controller:"BDC"
+            )
 ])

@@ -1,10 +1,20 @@
 class BooksController < ApplicationController
   def index
-    render layout: false
+    book = Books.all
+    respond_to do |f|
+      f.html {render :layout => false }
+      f.json {render :json => book}
+    end
   end
 
   def show
-    render layout: false
+    if params[:format] == "json"
+      book = Books.find(params[:id])
+    end
+    respond_to do |f|
+      f.html {render :layout => false}
+      f.json {render :json => book}
+    end
   end
 
 end

@@ -1,22 +1,20 @@
 BookAppCtrls = angular.module("BookAppCtrls",[])
 
-BookAppCtrls.controller("BooksCtrl", ["$scope", ($scope)->
-  $scope.message = "HHHHHHEEEEEEELLLLLLOOOOOllo world!"
-  $scope.fakeBooks = [
-      id: 1
-      title: "Happy Tails"
-      description: "Fun Times"
-    ,
-      id: 2
-      title: "Bog Adventures"
-      description: "Muddy Days"
-      ]
-  console.log $scope.fakeBooks
+BookAppCtrls.controller("BooksCtrl", ["$scope", "$http", ($scope, $http)->
+  $scope.message = "This is the sites/index.html.erb rendering from <%yield%>"
+  $http.get("/books.json").success (data)->
+    console.log(data)
+    $scope.newBooks = data
 
 
 ])
 
-BookAppCtrls.controller("BookDetailsCtrl", ["$scope","$routeParams",
-  ($scope, $routeParams)->
+BookAppCtrls.controller("BDC", ["$scope","$routeParams", "$http",
+  ($scope, $routeParams, $http)->
     $scope.bookId = $routeParams.id
+    console.log("hello")
+    $http.get("/books/" + $scope.bookId + ".json").success (data)->
+      console.log(data)
+      $scope.bookDetails = data
+
     ])
