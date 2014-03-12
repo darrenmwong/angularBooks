@@ -1,7 +1,8 @@
 <div ng-controller="BooksCtrl">
     {{message}}
     <div ng-repeat="book in fakeBooks">
-      <h3>{{book.title}} </h3>
+
+      <h3><a href="/books/{{book.id}}"> {{book.title}} </a></h3>
 
     </div>
 </div>

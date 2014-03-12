@@ -12,4 +12,11 @@ BookAppCtrls.controller("BooksCtrl", ["$scope", ($scope)->
       description: "Muddy Days"
       ]
   console.log $scope.fakeBooks
+
+
 ])
+
+BookAppCtrls.controller("BookDetailsCtrl", ["$scope","$routeParams",
+  ($scope, $routeParams)->
+    $scope.bookId = $routeParams.id
+    ])

@@ -10,6 +10,6 @@ BooksRouter.config(["$routeProvider",
             }).
             when("/books/:id",
             templateUrl: "books/view",
-            controller:"BooksCtrl"
+            controller:"BooksDetailsCtrl"
         )
 ])
