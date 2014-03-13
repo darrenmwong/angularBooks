@@ -1,8 +1,10 @@
 <div ng-controller="BooksCtrl">
     {{message}}
+
+    <br>
     <div ng-repeat="book in newBooks">
 
-      <h3><a href="/#/books/{{book.id}}"> {{book.title}} </a></h3>
+      <a href="/#/books/{{book.id}}"> {{book.title}} </a>
 
     </div>
 </div>

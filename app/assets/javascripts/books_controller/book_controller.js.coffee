@@ -1,7 +1,7 @@
 BookAppCtrls = angular.module("BookAppCtrls",[])
 
 BookAppCtrls.controller("BooksCtrl", ["$scope", "$http", ($scope, $http)->
-  $scope.message = "This is the sites/index.html.erb rendering from <%yield%>"
+  $scope.message = "This is the sites/index.html.erb rendering from <%yield% that won't dynamically load"
   $scope.save = ()->
     formData = {
       description: @book.description
@@ -9,10 +9,15 @@ BookAppCtrls.controller("BooksCtrl", ["$scope", "$http", ($scope, $http)->
     }
     $http({
       method: "POST"
-      url: "/books",
+      url: "/books.json",
       data: { books: formData }
-      })
-    console.log(formData)
+      }).
+        success((data)->
+          console.log(data)
+          console.log($scope.newBooks)
+          $scope.newBooks.push(data)
+          console.log($scope.newBooks)
+          )
 
 
   $http.get("/books.json").success (data)->
@@ -29,12 +34,12 @@ BookAppCtrls.controller("BDC", ["$scope","$routeParams", "$http",
       $scope.bookDetails = data
 ])
 
-BookAppCtrls.controller("FormCtrl", ["$scope", "http",
-  ($scope, $http)->
-    $scope.save = ()->
-      console.log("posting Data")
-      formData = $scope.form
-      console.log(formData)
-
-
-])
+# BookAppCtrls.controller("FormCtrl", ["$scope", "http",
+#   ($scope, $http)->
+#     $scope.save = ()->
+#       console.log("posting Data")
+#       formData = $scope.form
+#       console.log(formData)
+#
+#
+# ])

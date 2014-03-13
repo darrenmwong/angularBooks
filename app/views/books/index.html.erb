@@ -11,10 +11,16 @@ This is the Books View
 <!-- </div> -->
 
 <form>
-  <input ng-model="book.title">
-  <input ng-model="book.description">
+  Title:<input ng-model="book.title"><br>
+  Description:<br><input ng-model="book.description" style="width:200px; height:50px;">
   <button ng-click="save()">Create</button>
 </form>
+
+<div ng-repeat="book in newBooks">
+
+  <a href="/#/books/{{book.id}}"> {{book.title}} </a>
+
+</div>
 
 
 <br><br>
