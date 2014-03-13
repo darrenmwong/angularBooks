@@ -17,4 +17,15 @@ class BooksController < ApplicationController
     end
   end
 
+  def create
+    new_book = params.require(:books).permit(:title, :description)
+    book = Books.create(new_book)
+
+    respond_to do |f|
+      f.html {redirect_to books_path}
+      f.json {render json: book}
+    end
+  end
+
+
 end
